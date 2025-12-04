@@ -73,7 +73,8 @@ export default function CreateGroupPage() {
 
   const copyAdminLink = () => {
     if (createdGroup) {
-      const adminUrl = `${window.location.origin}/grupo/${createdGroup.id}?admin=${createdGroup.admin_secret}`
+      const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== "undefined" ? window.location.origin : "http://localhost:3000")
+      const adminUrl = `${baseUrl}/grupo/${createdGroup.id}?admin=${createdGroup.admin_secret}`
       navigator.clipboard.writeText(adminUrl)
       setCopiedAdminLink(true)
       setTimeout(() => setCopiedAdminLink(false), 2000)

@@ -226,7 +226,8 @@ export default function GroupPage() {
 
   const shareJoinLink = () => {
     if (group) {
-      const joinUrl = `${window.location.origin}/unirse`
+      const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== "undefined" ? window.location.origin : "http://localhost:3000")
+      const joinUrl = `${baseUrl}/unirse`
       const message = `¡Únete a nuestro Amigo Secreto "${group.name}"!\n\nCódigo: ${group.join_code}\n\nEntra aquí: ${joinUrl}`
 
       if (navigator.share) {

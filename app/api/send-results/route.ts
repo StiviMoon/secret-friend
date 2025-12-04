@@ -53,7 +53,8 @@ export async function POST(request: Request) {
         return { success: false, name: giver.name, reason: "Not an email" }
       }
 
-      const resultUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/resultado/${groupId}?name=${encodeURIComponent(giver.name)}`
+      const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+      const resultUrl = `${baseUrl}/resultado/${groupId}?name=${encodeURIComponent(giver.name)}`
 
       const htmlContent = `
 <!DOCTYPE html>

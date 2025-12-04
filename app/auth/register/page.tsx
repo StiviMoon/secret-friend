@@ -13,6 +13,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { createClient } from "@/lib/supabase/client"
+import { getBaseUrl } from "@/lib/utils/url"
 import { UserPlus, Mail, Lock, User, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -55,7 +56,7 @@ export default function RegisterPage() {
           data: {
             name,
           },
-          emailRedirectTo: `${window.location.origin}/auth/login`,
+          emailRedirectTo: `${getBaseUrl()}/auth/login`,
         },
       })
 
